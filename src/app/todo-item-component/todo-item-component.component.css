@@ -1,0 +1,26 @@
+.task {
+  display: flex;
+  align-items: center;
+}
+
+p {
+  margin: 0;
+}
+
+input[type='radio']:before {
+  content:'';
+  display:block;
+  width:100%;
+  height:100%;
+  border-radius:50%;
+}
+
+.delete-button {
+  width: 30px;
+}
+
+.delete-button-img {
+  width: 30px;
+}
+
+
