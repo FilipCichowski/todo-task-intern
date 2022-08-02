@@ -3,18 +3,22 @@
   <input matInput #primaryInput placeholder="" value="" >
 </mat-form-field>
 <button mat-button (click)="addTodo()">Add</button>
-<p>Lista zadań</p>
+<h1>Lista zadań</h1>
 <div class="list-wrapper">
-  <app-todo-item-component
-    *ngFor="let item of this.getTodos() | filterTodoByStatus:true; let i = index"
-    [item]="item"
-    [index]="i"
-  ></app-todo-item-component>
-  <app-todo-item-component
-    *ngFor="let item of this.getTodos() | filterTodoByStatus:false; let i = index"
-    [item]="item"
-    [index]="i"
-  ></app-todo-item-component>
+    <div class="todo-wrapper">
+      <p>Zrobione:</p>
+      <app-todo-item-component
+        *ngFor="let item of this.getTodos() | filterTodoByStatus:true"
+        [item]="item"
+        [index]="this.getTodos().indexOf(item)"
+      ></app-todo-item-component>
+    </div>
+  <div class="todo-wrapper">
+    <p>Do zrobienia:</p>
+    <app-todo-item-component
+      *ngFor="let item of this.getTodos() | filterTodoByStatus:false"
+      [item]="item"
+      [index]="this.getTodos().indexOf(item)"
+    ></app-todo-item-component>
+  </div>
 </div>
-
-

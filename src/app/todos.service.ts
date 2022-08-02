@@ -28,5 +28,9 @@ export class TodosService {
     this.todos.splice(index, 1);
   }
 
+  setDoneCreatedOnTodoById(date: string, index: number): void {
+    this.todos[index].doneCreated = date;
+  }
+
   constructor() { }
 }

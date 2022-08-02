@@ -17,6 +17,10 @@ export class TodoItemComponentComponent implements OnInit {
   imageBinUrl: string = "/assets/trash-bin.png";
 
   onClickDone(): void {
+    if(this.todos.getTodos()[this.index].isDone !== true) {
+      let today= new Date().toLocaleString('en-US', { timeZone: 'UTC' });
+      this.todos.setDoneCreatedOnTodoById(today, this.index);
+    }
     this.todos.changeCheckedToOpposite(this.index);
   }
 

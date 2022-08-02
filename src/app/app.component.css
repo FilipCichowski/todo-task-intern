@@ -1,3 +1,9 @@
+.todo-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .list-wrapper {
   display: flex;
+  justify-content: space-between;
 }
