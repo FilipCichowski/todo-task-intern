@@ -4,15 +4,17 @@
 </mat-form-field>
 <button mat-button (click)="addTodo()">Add</button>
 <p>Lista zadań</p>
+<div class="list-wrapper">
+  <app-todo-item-component
+    *ngFor="let item of this.getTodos() | filterTodoByStatus:true; let i = index"
+    [item]="item"
+    [index]="i"
+  ></app-todo-item-component>
   <app-todo-item-component
     *ngFor="let item of this.getTodos() | filterTodoByStatus:false; let i = index"
     [item]="item"
     [index]="i"
   ></app-todo-item-component>
-<br>
-<app-todo-item-component
-  *ngFor="let item of this.getTodos(); let i = index"
-  [item]="item"
-  [index]="i"
-></app-todo-item-component>
+</div>
+
 

@@ -7,6 +7,8 @@ import {Todo} from "./Todo";
 export class FilterTodoByStatus implements PipeTransform {
   transform(input: Todo[], selectedOnly: boolean): Todo[] {
     //return input.filter(e => e.isDone === selectedOnly);
-    return input;
+    return input.filter((e) => {
+      return e.isDone === selectedOnly;
+    });
   }
 }

@@ -18,7 +18,7 @@ export class AppComponent {
   }
 
   getTodos(): Todo[] {
-    return this.todos.getTodos();
+    return [...this.todos.getTodos()];
   }
 
   clearInput() {

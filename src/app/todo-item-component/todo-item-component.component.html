@@ -1,11 +1,11 @@
 <div class="task">
   <input
-    type="radio"
-    class="btn"
+    type="checkbox"
+    class="check"
     (click)="onClickDone()"
     [checked]="item.isDone"
     id="i"
   />
   <p>{{ item.name }}</p>
-  <button class="delete-button" (click)="removeItem()">remove</button>
+  <button class="delete-button" (click)="removeItem()"><mat-icon fontIcon="delete" class="white-icon"></mat-icon></button>
 </div>

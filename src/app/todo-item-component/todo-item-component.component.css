@@ -1,6 +1,8 @@
 .task {
   display: flex;
   align-items: center;
+  width: 200px;
+  justify-content: space-between;
 }
 
 p {
@@ -15,5 +17,46 @@ input[type='radio']:before {
   border-radius:50%;
 }
 
+.white-icon {
+  color: white;
+}
 
+.delete-button {
+  height: 42px;
+  background: red;
+  border-radius: 5px;
+  border-color: transparent;
+  padding-top: 5px;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  -webkit-appearance: none; /*hides the default checkbox*/
+  height: 42px;
+  left: 20px;
+  padding: 0 15px;
+  transition: 0.10s;
+  background-color: #FE0006;
+  text-align: center;
+  font-weight: 600;
+  color: white;
+  border-radius: 5px;
+}
+
+.check:checked {
+  background-color: #0E9700;
+}
+
+.check:before {
+  content: "✖";
+}
+.check:checked:before {
+  content: "✔";
+}
+
+.check:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
 
