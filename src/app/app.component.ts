@@ -10,13 +10,15 @@ import {Todo} from "./Todo";
 
 export class AppComponent {
   @ViewChild('primaryInput') primaryInput!: ElementRef;
-  todo: Todo[] = [];
 
   addTodo(): void {
     this.todos.addTodo(this.primaryInput.nativeElement.value, false);
-    this.updateTodo();
     this.clearInput();
     this.setFocusOnInput();
+  }
+
+  getTodos(): Todo[] {
+    return this.todos.getTodos();
   }
 
   clearInput() {
@@ -25,14 +27,6 @@ export class AppComponent {
 
   setFocusOnInput(){
     this.primaryInput.nativeElement.focus();
-  }
-
-  updateTodo(): void {
-    this.todo = this.todos.getTodos();
-  }
-
-  onSelectionChange(e: Todo, i: number):void {
-    console.log(e, i);
   }
 
   constructor(private todos: TodosService) {

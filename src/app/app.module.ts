@@ -8,11 +8,13 @@ import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import { TodoItemComponentComponent } from './todo-item-component/todo-item-component.component';
+import { FilterTodoByStatus } from './filter-todo-by-status';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TodoItemComponentComponent
+    TodoItemComponentComponent,
+    FilterTodoByStatus
   ],
   imports: [
     BrowserModule,
