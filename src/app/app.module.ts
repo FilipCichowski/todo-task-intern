@@ -12,6 +12,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { TodoItemComponentComponent } from './todo-item-component/todo-item-component.component';
 import { FilterTodoByStatus } from './filter-todo-by-status';
 import { TooltipDirective } from './tooltip.directive';
+import { NotificationComponent } from './notification/notification.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { TooltipDirective } from './tooltip.directive';
     TodoItemComponentComponent,
     FilterTodoByStatus,
     TooltipDirective,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,

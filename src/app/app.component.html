@@ -1,24 +1,32 @@
-<mat-form-field appearance="fill">
-  <mat-label>Nazwa taska</mat-label>
-  <input matInput #primaryInput placeholder="" value="" >
-</mat-form-field>
-<button mat-button (click)="addTodo()">Add</button>
+<div class="top-wrapper">
+  <div class="input-wrapper">
+    <mat-form-field appearance="fill">
+      <mat-label>Nazwa taska</mat-label>
+      <input matInput #primaryInput placeholder="" value="">
+    </mat-form-field>
+    <button mat-button (click)="addTodo()">Add</button>
+  </div>
+
+  <ng-container #notification></ng-container>
+</div>
 <h1>Lista zadań</h1>
 <div class="list-wrapper">
-    <div class="todo-wrapper">
-      <p>Zrobione:</p>
-      <app-todo-item-component
-        *ngFor="let item of this.getTodos() | filterTodoByStatus:true"
-        [item]="item"
-        [index]="this.getTodos().indexOf(item)"
-      ></app-todo-item-component>
-    </div>
+  <div class="todo-wrapper">
+    <p>Zrobione:</p>
+    <app-todo-item-component
+      *ngFor="let item of this.getTodos() | filterTodoByStatus:true"
+      [item]="item"
+      [index]="this.getTodos().indexOf(item)"
+      (newTodoEvent)="displayNotification($event)"
+    ></app-todo-item-component>
+  </div>
   <div class="todo-wrapper">
     <p>Do zrobienia:</p>
     <app-todo-item-component
       *ngFor="let item of this.getTodos() | filterTodoByStatus:false"
       [item]="item"
       [index]="this.getTodos().indexOf(item)"
+      (newTodoEvent)="displayNotification($event)"
     ></app-todo-item-component>
   </div>
 </div>
