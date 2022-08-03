@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component} from '@angular/core';
 import {Todo} from "../Todo";
 import {Input} from "@angular/core";
 import {TodosService} from "../todos.service";
@@ -8,17 +8,15 @@ import {TodosService} from "../todos.service";
   templateUrl: './todo-item-component.component.html',
   styleUrls: ['./todo-item-component.component.css']
 })
-export class TodoItemComponentComponent implements OnInit {
+export class TodoItemComponentComponent {
   @Input()
   item!: Todo;
   @Input()
   index!: number;
 
-  imageBinUrl: string = "/assets/trash-bin.png";
-
   onClickDone(): void {
-    if(this.todos.getTodos()[this.index].isDone !== true) {
-      let today= new Date().toLocaleString('en-US', { timeZone: 'UTC' });
+    if (this.todos.getTodos()[this.index].isDone !== true) {
+      let today = new Date().toLocaleString('en-US', {timeZone: 'UTC'});
       this.todos.setDoneCreatedOnTodoById(today, this.index);
     }
     this.todos.changeCheckedToOpposite(this.index);
@@ -28,9 +26,6 @@ export class TodoItemComponentComponent implements OnInit {
     this.todos.deleteTodoById(this.index);
   }
 
-  constructor(private todos: TodosService) { }
-
-  ngOnInit(): void {
+  constructor(private todos: TodosService) {
   }
-
 }

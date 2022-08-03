@@ -1,4 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import {Pipe, PipeTransform} from '@angular/core';
 import {Todo} from "./Todo";
 
 @Pipe({
@@ -6,7 +6,6 @@ import {Todo} from "./Todo";
 })
 export class FilterTodoByStatus implements PipeTransform {
   transform(input: Todo[], selectedOnly: boolean): Todo[] {
-    //return input.filter(e => e.isDone === selectedOnly);
     return input.filter((e) => {
       return e.isDone === selectedOnly;
     });

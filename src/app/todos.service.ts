@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Todo} from "./Todo";
 
 @Injectable({
@@ -12,7 +12,6 @@ export class TodosService {
       name: name,
       isDone: isDone
     });
-    console.log(this.todos);
   }
 
   getTodos(): Todo[] {
@@ -21,7 +20,6 @@ export class TodosService {
 
   changeCheckedToOpposite(index: number): void {
     this.todos[index].isDone = !this.todos[index].isDone;
-    console.log(this.todos);
   }
 
   deleteTodoById(index: number): void {
@@ -32,5 +30,6 @@ export class TodosService {
     this.todos[index].doneCreated = date;
   }
 
-  constructor() { }
+  constructor() {
+  }
 }
