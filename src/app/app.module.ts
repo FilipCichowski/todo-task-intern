@@ -15,6 +15,9 @@ import { TooltipDirective } from './tooltip.directive';
 import {SnackbarModule} from "./snackbar/snackbar.module";
 
 import { OverlayModule } from "@angular/cdk/overlay";
+import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatDialogModule} from "@angular/material/dialog";
 
 
 @NgModule({
@@ -23,6 +26,7 @@ import { OverlayModule } from "@angular/cdk/overlay";
     TodoItemComponentComponent,
     FilterTodoByStatus,
     TooltipDirective,
+    ConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,7 +36,10 @@ import { OverlayModule } from "@angular/cdk/overlay";
     MatListModule,
     MatIconModule,
     SnackbarModule,
-    OverlayModule
+    OverlayModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

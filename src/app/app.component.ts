@@ -1,9 +1,6 @@
 import {Component, ElementRef, ViewChild, ViewContainerRef} from '@angular/core';
 import {TodosService} from "./todos.service";
 import {Todo} from "./Todo";
-import {Overlay, OverlayRef} from "@angular/cdk/overlay";
-import {ComponentPortal} from "@angular/cdk/portal";
-import {SnackbarComponent} from "./snackbar/snackbar.component";
 import {SnackbarService} from "./snackbar.service";
 
 @Component({

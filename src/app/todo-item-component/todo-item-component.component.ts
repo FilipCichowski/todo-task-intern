@@ -3,6 +3,7 @@ import {Todo} from "../Todo";
 import {Input} from "@angular/core";
 import {TodosService} from "../todos.service";
 import {SnackbarService} from "../snackbar.service";
+import {ConfirmationDialogServiceService} from "../confirmation-dialog-service.service";
 
 @Component({
   selector: 'app-todo-item-component',
@@ -28,10 +29,14 @@ export class TodoItemComponentComponent {
   }
 
   removeItem(): void {
-    this.todos.deleteTodoById(this.index);
-    this.snackbarService.renderOverlay("Item successfully removed", true);
+    this.dialogService.getUserConfirmation((data) => {
+      if(data) {
+        this.todos.deleteTodoById(this.index);
+        this.snackbarService.renderOverlay("Item successfully removed", true);
+      }
+    })
   }
 
-  constructor(private todos: TodosService, private snackbarService: SnackbarService) {
+  constructor(private todos: TodosService, private snackbarService: SnackbarService, private dialogService: ConfirmationDialogServiceService) {
   }
 }
