@@ -2,7 +2,7 @@ import {Component, EventEmitter, Output, ViewChild, ViewContainerRef} from '@ang
 import {Todo} from "../Todo";
 import {Input} from "@angular/core";
 import {TodosService} from "../todos.service";
-import {NotificationComponent} from "../notification/notification.component";
+import {SnackbarService} from "../snackbar.service";
 
 @Component({
   selector: 'app-todo-item-component',
@@ -15,22 +15,23 @@ export class TodoItemComponentComponent {
   @Input()
   index!: number;
 
-  @Output() newTodoEvent = new EventEmitter<string>();
 
   onClickDone(): void {
     if (this.todos.getTodos()[this.index].isDone !== true) {
       let today = new Date().toLocaleString('en-US', {timeZone: 'UTC'});
       this.todos.setDoneCreatedOnTodoById(today, this.index);
+    } else {
+      this.todos.setDoneCreatedOnTodoById("Not finished yet", this.index);
     }
-    this.newTodoEvent.emit("Item state changed");
     this.todos.changeCheckedToOpposite(this.index);
+    this.snackbarService.renderOverlay("Item state changed", true);
   }
 
   removeItem(): void {
-    this.newTodoEvent.emit("Item deleted");
     this.todos.deleteTodoById(this.index);
+    this.snackbarService.renderOverlay("Item successfully removed", true);
   }
 
-  constructor(private todos: TodosService) {
+  constructor(private todos: TodosService, private snackbarService: SnackbarService) {
   }
 }

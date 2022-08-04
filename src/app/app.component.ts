@@ -1,7 +1,10 @@
 import {Component, ElementRef, ViewChild, ViewContainerRef} from '@angular/core';
 import {TodosService} from "./todos.service";
 import {Todo} from "./Todo";
-import {NotificationComponent} from "./notification/notification.component";
+import {Overlay, OverlayRef} from "@angular/cdk/overlay";
+import {ComponentPortal} from "@angular/cdk/portal";
+import {SnackbarComponent} from "./snackbar/snackbar.component";
+import {SnackbarService} from "./snackbar.service";
 
 @Component({
   selector: 'app-root',
@@ -20,10 +23,10 @@ export class AppComponent {
     if (this.primaryInput.nativeElement.value.length >= 5) {
       console.log("input valid");
       this.todos.addTodo(this.primaryInput.nativeElement.value, false);
-      this.renderNotification("Item succesfully added", true)
+      this.snackbarService.renderOverlay("Item succesfully added", true);
     } else {
-      this.renderNotification("Item name should contain at least 5 characters", false);
       console.log("input invalid");
+      this.snackbarService.renderOverlay("Item's name is too short", false);
     }
     this.clearInput();
     this.setFocusOnInput();
@@ -41,18 +44,9 @@ export class AppComponent {
     this.primaryInput.nativeElement.focus();
   }
 
-  displayNotification(notification: string) {
-    console.log(notification);
-    this.renderNotification(notification, true);
+  constructor(private todos: TodosService, private snackbarService: SnackbarService) {
   }
 
-  renderNotification(message: string, isSuccesful: boolean) {
-    this.notification.clear();
-    const component = this.notification.createComponent(NotificationComponent);
-    component.instance.isSuccesful = isSuccesful;
-    component.instance.message = message;
-  }
 
-  constructor(private todos: TodosService) {
-  }
+
 }

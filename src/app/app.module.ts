@@ -12,7 +12,9 @@ import {MatIconModule} from '@angular/material/icon';
 import { TodoItemComponentComponent } from './todo-item-component/todo-item-component.component';
 import { FilterTodoByStatus } from './filter-todo-by-status';
 import { TooltipDirective } from './tooltip.directive';
-import { NotificationComponent } from './notification/notification.component';
+import {SnackbarModule} from "./snackbar/snackbar.module";
+
+import { OverlayModule } from "@angular/cdk/overlay";
 
 
 @NgModule({
@@ -21,7 +23,6 @@ import { NotificationComponent } from './notification/notification.component';
     TodoItemComponentComponent,
     FilterTodoByStatus,
     TooltipDirective,
-    NotificationComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +30,9 @@ import { NotificationComponent } from './notification/notification.component';
     MatButtonModule,
     MatInputModule,
     MatListModule,
-    MatIconModule
+    MatIconModule,
+    SnackbarModule,
+    OverlayModule
   ],
   providers: [],
   bootstrap: [AppComponent]
