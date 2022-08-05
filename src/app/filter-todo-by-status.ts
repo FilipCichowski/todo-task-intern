@@ -1,8 +1,8 @@
-import {Pipe, PipeTransform} from '@angular/core';
-import {Todo} from "./Todo";
+import { Pipe, PipeTransform } from '@angular/core';
+import { Todo } from './Todo';
 
 @Pipe({
-  name: 'filterTodoByStatus'
+  name: 'filterTodoByStatus',
 })
 export class FilterTodoByStatus implements PipeTransform {
   transform(input: Todo[], selectedOnly: boolean): Todo[] {

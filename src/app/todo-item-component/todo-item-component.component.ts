@@ -1,9 +1,9 @@
-import {Component, EventEmitter, Output, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component } from '@angular/core';
 import {Todo} from "../Todo";
 import {Input} from "@angular/core";
 import {TodosService} from "../todos.service";
 import {SnackbarService} from "../snackbar.service";
-import {ConfirmationDialogServiceService} from "../confirmation-dialog-service.service";
+import {ConfirmationDialogService} from "../confirmation-dialog.service";
 
 @Component({
   selector: 'app-todo-item-component',
@@ -15,7 +15,6 @@ export class TodoItemComponentComponent {
   item!: Todo;
   @Input()
   index!: number;
-
 
   onClickDone(): void {
     if (this.todos.getTodos()[this.index].isDone !== true) {
@@ -37,6 +36,6 @@ export class TodoItemComponentComponent {
     })
   }
 
-  constructor(private todos: TodosService, private snackbarService: SnackbarService, private dialogService: ConfirmationDialogServiceService) {
+  constructor(private todos: TodosService, private snackbarService: SnackbarService, private dialogService: ConfirmationDialogService) {
   }
 }

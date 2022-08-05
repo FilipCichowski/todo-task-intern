@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
-import {ComponentPortal} from "@angular/cdk/portal";
-import {SnackbarComponent} from "./snackbar/snackbar.component";
-import {Overlay, OverlayRef} from "@angular/cdk/overlay";
+import { Injectable } from '@angular/core';
+import { ComponentPortal } from '@angular/cdk/portal';
+import { SnackbarComponent } from './snackbar/snackbar.component';
+import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SnackbarService {
   overlayRef!: OverlayRef;
@@ -18,5 +18,5 @@ export class SnackbarService {
       this.overlayRef.dispose();
     }, 1500);
   }
-  constructor(private overlay: Overlay) { }
+  constructor(private overlay: Overlay) {}
 }

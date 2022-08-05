@@ -6,7 +6,11 @@
     [checked]="item.isDone"
     id="i"
   />
-  <p>{{ item.name }}</p>
+  <div class="dataWrapper">
+    <p>{{ item.name }}</p>
+    <p>{{item.endDate}}</p>
+  </div>
+
   <button class="delete-button" (click)="removeItem()">
     <mat-icon fontIcon="delete" class="white-icon"></mat-icon>
   </button>

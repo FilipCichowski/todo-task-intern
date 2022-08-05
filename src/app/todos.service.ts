@@ -1,16 +1,17 @@
-import {Injectable} from '@angular/core';
-import {Todo} from "./Todo";
+import { Injectable } from '@angular/core';
+import { Todo } from './Todo';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TodosService {
   private todos: Todo[] = [];
 
-  addTodo(name: string, isDone: boolean): void {
+  addTodo(name: string, isDone: boolean, endDate: string): void {
     this.todos.unshift({
       name: name,
-      isDone: isDone
+      isDone: isDone,
+      endDate: endDate,
     });
   }
 
@@ -30,6 +31,5 @@ export class TodosService {
     this.todos[index].doneCreated = date;
   }
 
-  constructor() {
-  }
+  constructor() {}
 }

@@ -2,6 +2,7 @@ import {Component, ElementRef, ViewChild, ViewContainerRef} from '@angular/core'
 import {TodosService} from "./todos.service";
 import {Todo} from "./Todo";
 import {SnackbarService} from "./snackbar.service";
+import {DatePickerDialog} from "./date-picker-dialog.service";
 
 @Component({
   selector: 'app-root',
@@ -14,15 +15,18 @@ export class AppComponent {
 
   @ViewChild('notification', {read: ViewContainerRef, static: true})
   private notification!: ViewContainerRef;
+  taskName: string = "";
 
   addTodo(): void {
-    //console.log(typeof (this.primaryInput.nativeElement.value));
-    if (this.primaryInput.nativeElement.value.length >= 5) {
-      console.log("input valid");
-      this.todos.addTodo(this.primaryInput.nativeElement.value, false);
-      this.snackbarService.renderOverlay("Item succesfully added", true);
+    this.taskName = this.primaryInput.nativeElement.value;
+    if (this.taskName.length >= 5) {
+      this.datePickerDialog.renderDataPicker((date) => {
+        if (typeof(date) === "string") {
+          this.todos.addTodo(this.taskName, false, date);
+          this.snackbarService.renderOverlay("Item succesfully added", true);
+        }
+      });
     } else {
-      console.log("input invalid");
       this.snackbarService.renderOverlay("Item's name is too short", false);
     }
     this.clearInput();
@@ -41,7 +45,7 @@ export class AppComponent {
     this.primaryInput.nativeElement.focus();
   }
 
-  constructor(private todos: TodosService, private snackbarService: SnackbarService) {
+  constructor(private todos: TodosService, private snackbarService: SnackbarService, private datePickerDialog: DatePickerDialog) {
   }
 
 
